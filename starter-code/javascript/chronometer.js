@@ -15,8 +15,22 @@ class Chronometer {
   getSeconds() {
   return Math.floor(this.currentTime % 60);
   }
-  // twoDigitsNumber() {}
-  // stopClick() {}
-  // resetClick() {}
+  
+  twoDigitsNumber(input) {
+    if(input<10){
+      return "0" + input;
+    }
+    else if(input>9){
+      return String(input);
+    }
+  }
+
+  stopClick() {
+    clearInterval();
+  }
+  resetClick() {
+    this.currentTime = 0;
+  }
+
   // splitClick() {}
 }
