@@ -30,11 +30,11 @@ function printMilliseconds() {
 }
 
 function printSplit() {
-
+document.getElementById("splits").innerHTML += `<li>${chronometer.splitClick()}</li>`
 }
 
 function clearSplits() {
-
+    document.getElementById("splits").innerHTML = "";
 }
 
 function setStopBtn() {
@@ -59,19 +59,27 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeft.addEventListener('click', function () {
-if(btnLeft.innerHTML == "START"){
+if(btnLeft.className == "btn start"){
    setStopBtn();
    setSplitBtn();
    chronometer.startClick();
    printTime();
 }
-else if(btnLeft.innerHTML == "STOP"){
+else if(btnLeft.className == "btn stop"){
     setStartBtn();
     setResetBtn();
+    chronometer.stopClick();
+    
 }
 });
 
 // Reset/Split Button
 btnRight.addEventListener('click', function () {
-
+if(btnRight.className == "btn split"){
+    printSplit();
+}
+else if(btnRight.className == "btn reset"){
+    chronometer.resetClick();
+        clearSplits();
+}
 });
